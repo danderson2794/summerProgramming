@@ -1,6 +1,6 @@
 make:
-	g++ main.cpp aeromethods.cpp -std=c++11 -O3
+	g++ main.cpp aeromethods.cpp -std=c++11 -O3 -o main
 run:
-	./a.out
+	./main
 clean:
-	rm a.out
+	rm main
