@@ -22,6 +22,7 @@ void printMenu()
     std::cout << "Pick an option below:\n1 reserve a ticket\n2 cancel a reservation\n"
         "3 check ticket reservation\n4 display current passengers\n5 exit program\n\n";
 }
+
 int getUserInput()
 {
     int temp = 0;
@@ -93,4 +94,16 @@ void startProgram(int& menu)
             if(it->id == idLocation && (it->cap - it->size >= 0)) addPassenger(idLocation, ticketID);
         }
     }
+}
+
+/* -------------------------------------------------------------------------------------------------- */
+           
+//  Below will be used for removing a ticket item
+
+/* -------------------------------------------------------------------------------------------------- */
+
+void removePassenger()
+{
+    //std::cout 
+    //FIXME need to finish. 
 }
