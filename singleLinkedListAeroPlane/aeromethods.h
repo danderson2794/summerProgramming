@@ -46,4 +46,5 @@ void printList();
 void getPassengerInfo(Flights* f, int& id);
 void addPassenger(int&, int&);
 void startProgram(int&);
-
+void removePassenger();
+void display();

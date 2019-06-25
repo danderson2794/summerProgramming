@@ -94,6 +94,14 @@ void startProgram(int& menu)
             if(it->id == idLocation && (it->cap - it->size >= 0)) addPassenger(idLocation, ticketID);
         }
     }
+    if(menu == 2)
+    {
+        removePassenger();
+    }
+    if(menu == 4)
+    {
+        display();
+    }
 }
 
 /* -------------------------------------------------------------------------------------------------- */
@@ -104,6 +112,64 @@ void startProgram(int& menu)
 
 void removePassenger()
 {
-    //std::cout 
-    //FIXME need to finish. 
+    std::string lname = "", fname = "";
+    std::cout << "What is your last name?\n";
+    std::cin >> lname;
+    std::cout << "What is your first name?\n";
+    std::cin >> fname;
+    //This is the brute force method.. In the future I could implement my linkedList as a BST for faster search time. 
+    //current run time for brute force method is O(n^2).. BST would cut it down to O(n log N).  
+    for(Flights *it = head->next; it != NULL; it = it->next)
+    {
+        for(int i = 0; i < it->passengers.size(); i++)
+        {
+            if(it->passengers[i].first_name == fname && it->passengers[i].last_name == lname)
+            {
+                std::string temp;
+                std::cout << "Your ticket has been found. Are you sure you want to cancel your reservation? Y or N\n";
+                std::cin >> temp;
+                if(temp == "Y")
+                {
+                    std::cout << "Please confirm your id number:\nID: ";
+                    int testID = 0;
+                    std::cin >> testID;
+                    //Once the ID has been confirmed, then delete that passenger from the flight. 
+                    if(testID == it->passengers[i].id) 
+                    {
+                        it->passengers.erase(it->passengers.begin() + i); 
+                        std::cout << "Confirmed, you are removed from this flight\n"; 
+                    }
+                }
+            }
+        }
+    }
+  //  FIXME need to finish. 
 }
+
+
+
+/* -------------------------------------------------------------------------------------------------- */
+           
+//  Below will be used for displaying LinkedList
+
+/* -------------------------------------------------------------------------------------------------- */
+
+void display()
+{
+    for(Flights *it = head->next; it != NULL; it = it->next)
+    {
+        std::cout << "For " << it->location << "\n"; 
+        for(int i = 0; i < it->passengers.size(); i++)
+        {
+            std::cout << it->passengers[i].last_name << ", " << it->passengers[i].first_name <<"\n"; 
+        }
+    }
+    std::cout << std::endl;
+}
+
+
+
+
+
+
+
